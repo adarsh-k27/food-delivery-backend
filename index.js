@@ -4,6 +4,7 @@ const dotenv = require('dotenv').config()
 const mongoose = require('mongoose')
 const cors=require('cors')
 const userRouter =require('./routes/user')
+const productRouter=require('./routes/product')
 const {
     on
 } = require('./models/user')
@@ -18,6 +19,7 @@ mongoose.connection
 app.use(express.json())
 app.use(cors())  
 app.use('/api/user',userRouter)  
+app.use('/api/product',productRouter)
 //server connection
 app.listen(PORT, () => console.log("Connected To Port", PORT))
 

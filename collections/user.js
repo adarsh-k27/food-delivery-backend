@@ -3,7 +3,14 @@ const JWT=require('jsonwebtoken')
 
 exports.SignInGoogle=async(req,res)=>{
     try{
-    const {name,email,email_verified,picture}=req.body
+    const {
+        name,
+        email,
+        email_verified,
+        picture
+    } = req.body
+    let admin=false
+    console.log(req.body);
     const isExist=await UserModel.findOne({email})
     if(isExist){
         //login
@@ -14,7 +21,7 @@ exports.SignInGoogle=async(req,res)=>{
     }
     else{
         if(email=="adarshkdev27@gmail.com"){
-            const admin=true
+             admin=true
         }
         const create=await UserModel.create({name,email,admin,email_verified,picture})
         if(create){
