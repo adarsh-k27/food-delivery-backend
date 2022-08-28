@@ -7,7 +7,8 @@ const ProductSchema=mongoose.Schema({
         trim:true,
     },
     catogery:{
-        type:String,
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'catogery',
         required:true,
         trim:true,
     },
