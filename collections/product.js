@@ -68,8 +68,11 @@ exports.AddProduct = async (req, res) => {
 
 exports.GetAllProducts = async (req, res) => {
     try {
-        const AllProducts = await ProductModal.find({})
+        let AllProducts = await ProductModal.find({})
         if (AllProducts) {
+            AllProducts=await CatogeryModal.populate(AllProducts,{
+                path:"catogery"
+            })
             return res.status(200).json({
                 message: "succes",
                 products: AllProducts

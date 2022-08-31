@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const cors=require('cors')
 const userRouter =require('./routes/user')
 const productRouter=require('./routes/product')
+const cartRouter=require('./routes/cart')
 const {
     on
 } = require('./models/user')
@@ -20,6 +21,7 @@ app.use(express.json())
 app.use(cors())  
 app.use('/api/user',userRouter)  
 app.use('/api/product',productRouter)
+app.use('/api/cart',cartRouter)
 //server connection
 app.listen(PORT, () => console.log("Connected To Port", PORT))
 
